@@ -4,12 +4,14 @@ import Loader from "../components/Loader";
 
 import Island from "../models/Island";
 import Sky from "../models/Sky";
+import House from "../models/House";
+import Character from "../models/Character";
 import Bird from "../models/Bird";
 import Plane from "../models/Plane";
 import HomeInfo from "../components/HomeInfo";
 
 import { soundoff, soundon } from "../assets/icons";
-import sakura from '../assets/sakura.mp3'
+import sakura from "../assets/sakura.mp3";
 
 const Home = () => {
   const audioRef = useRef(new Audio(sakura));
@@ -65,53 +67,55 @@ const Home = () => {
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
 
   return (
-    <section className="w-full h-screen relative">
-        <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
-          {currentStage && <HomeInfo currentStage={currentStage} />}
-        </div>
-
+    <section className="h-screen">
       <Canvas
-        className={`w-full h-screen bg-transparent ${
-          isRotating ? "cursor-grabbing" : "cursor-grab"
-        }`}
-        camera={{ near: 0.1, far: 1000 }}
+        // className={`w-full h-screen bg-transparent ${
+        //   isRotating ? "cursor-grabbing" : "cursor-grab"
+        // }`}
+        gl={{ shadowMap: { enabled: true } }}
+        camera={{
+          fov: 45,
+          aspect: window.innerWidth / window.innerHeight,
+          near: 0.1,
+          far: 1000,
+          position: [0, 5, 5],
+        }}
       >
-        <Suspense fallback={<Loader />}>
-          <directionalLight position={[1, 1, 1]} intensity={2} />
-          <ambientLight intensity={0.5} />
-          <hemisphereLight
-            skyColor="#b1e1ff"
-            groundColor="#000000"
-            intensity={1}
-          />
+        <ambientLight color={0xffffff} intensity={0.7} />
+        <directionalLight
+          color={0xffffff}
+          intensity={1}
+          position={[-3, 10, -10]}
+          castShadow
+          shadow-camera-top={50}
+          shadow-camera-bottom={-50}
+          shadow-camera-left={-50}
+          shadow-camera-right={50}
+          shadow-camera-near={0.1}
+          shadow-camera-far={200}
+          shadow-mapSize={[4096, 4096]}
+        />
+        <hemisphereLight
+          skyColor="#b1e1ff"
+          groundColor="#000000"
+          intensity={1}
+        />
+        <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+          <planeGeometry args={[1, 1]} />
+          <meshPhongMaterial color={0xcbcbcb} depthWrite={false} />
+        </mesh>
 
-          <Bird />
-          <Sky isRotating={isRotating} />
-          <Island
-            position={islandPosition}
-            scale={islandScale}
-            rotation={islandRotation}
-            isRotating={isRotating}
-            setIsRotating={setIsRotating}
-            setCurrentStage={setCurrentStage}
-          />
-          <Plane
-            isRotating={isRotating}
-            planeScale={planeScale}
-            planePosition={planePosition}
-            rotation={[0, 20, 0]}
-          />
-        </Suspense>
+        <Character />
       </Canvas>
 
-      <div className='absolute bottom-2 left-2'>
+      {/* <div className="absolute bottom-2 left-2">
         <img
           src={!isPlayingMusic ? soundoff : soundon}
-          alt='sound'
+          alt="sound"
           onClick={() => setIsPlayingMusic(!isPlayingMusic)}
-          className='w-10 h-10 cursor-pointer object-contain'
+          className="w-10 h-10 cursor-pointer object-contain"
         />
-      </div>
+      </div> */}
     </section>
   );
 };
