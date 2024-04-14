@@ -108,14 +108,14 @@ const Home = () => {
         <Character />
       </Canvas>
 
-      {/* <div className="absolute bottom-2 left-2">
+      <div className="absolute bottom-2 left-2">
         <img
           src={!isPlayingMusic ? soundoff : soundon}
           alt="sound"
           onClick={() => setIsPlayingMusic(!isPlayingMusic)}
           className="w-10 h-10 cursor-pointer object-contain"
         />
-      </div> */}
+      </div>
     </section>
   );
 };
