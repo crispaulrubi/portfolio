@@ -38,7 +38,7 @@ const Home = () => {
           aspect: window.innerWidth / window.innerHeight,
           near: 0.1,
           far: 1000,
-          position: [0, 5, 12],
+          position: [0, 5, 5],
         }}
       >
         <Physics>
@@ -61,11 +61,12 @@ const Home = () => {
             groundColor="#000000"
             intensity={1}
           />
-          <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-            <planeGeometry args={[1, 1]} />
-            <meshPhongMaterial color={0xcbcbcb} depthWrite={false} />
-          </mesh>
 
+          {/* bldg 0,0 */}
+          <mesh position={[-4.3, 0, 4.3]}>
+            <boxGeometry args={[3.3, 0, 3.3]} />
+            <meshPhongMaterial visible={false} />
+          </mesh>
           <City />
           <Character />
         </Physics>
