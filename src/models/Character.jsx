@@ -6,6 +6,7 @@ import React, { useRef, useEffect, useCallback, useState } from "react";
 import * as THREE from "three";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
+import { useBox } from "@react-three/cannon";
 
 import characterModel from "../assets/3d/Soldier.glb";
 
@@ -18,6 +19,8 @@ export default function Character(props) {
   const [direction, setDirection] = useState(null);
   const [velocity, setVelocity] = useState(0);
   const DEFAULT_VELOCITY = 3;
+
+  const [ref, api] = useBox(() => ({ mass: 1, position: [0, 0, 0] }));
 
   const handleKeyDown = useCallback(
     (event) => {
@@ -64,7 +67,6 @@ export default function Character(props) {
           directionVector = new THREE.Vector3(1, 0, 0);
           break;
         default:
-          directionVector = new THREE.Vector3();
           break;
       }
       directionVector.multiplyScalar(velocity * delta);
@@ -72,8 +74,13 @@ export default function Character(props) {
 
       const x = group.current.position.x;
       const z = group.current.position.z;
-      camera.position.set(x, camera.position.y, z + 5); // Adjust '5' to set how far behind you want the camera
-      camera.lookAt(group.current.position); // Ensure the camera always points at the character
+      camera.position.set(x, camera.position.y, z + 5);
+      const offset = new THREE.Vector3(x, camera.position.y, z + 5);
+      offset.applyQuaternion(group.current.quaternion);
+      offset.add(group.current.position);
+      camera.position.lerp(offset, 0); // Smooth transition to the new position
+
+      camera.lookAt(group.current.position);
     }
   });
 
@@ -131,14 +138,13 @@ export default function Character(props) {
   }, [velocity]);
 
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} position={[0, 0, 5]} dispose={null}>
       <group name="Scene">
         <group
           castShadow
           name="Character"
-          position={[0, 0, 0]}
           rotation={[-Math.PI / 2, 0, Math.PI]}
-          scale={0.005}
+          scale={0.003}
         >
           <skinnedMesh
             name="vanguard_Mesh"
