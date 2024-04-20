@@ -2,8 +2,10 @@ import { useState, Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
 
+import Sky from "../models/Sky";
 import City from "../models/City";
 import Character from "../models/Character";
+import Roads from "../combined_models/Roads";
 import HomeInfo from "../components/HomeInfo";
 
 import { soundoff, soundon } from "../assets/icons";
@@ -62,13 +64,44 @@ const Home = () => {
             intensity={1}
           />
 
-          {/* bldg 0,0 */}
+          {/* bounding box 1st row bldgs */}
           <mesh position={[-4.3, 0, 4.3]}>
-            <boxGeometry args={[3.3, 0, 3.3]} />
+            <boxGeometry args={[3.3, 1, 3.3]} />
             <meshPhongMaterial visible={false} />
           </mesh>
+          <mesh position={[0, 0, 4.3]}>
+            <boxGeometry args={[3.3, 1, 3.3]} />
+            <meshPhongMaterial visible={false} />
+          </mesh>
+          <mesh position={[4.25, 0, 4.3]}>
+            <boxGeometry args={[3.3, 1, 3.3]} />
+            <meshPhongMaterial visible={false} />
+          </mesh>
+
+          {/* bounding box 2nd row bldgs */}
+          <mesh position={[-4.3, 0, 0]}>
+            <boxGeometry args={[3.3, 1, 3.3]} />
+            <meshPhongMaterial visible={false} />
+          </mesh>
+          <mesh position={[0, 0, 0]}>
+            <boxGeometry args={[3.3, 1, 3.3]} />
+            <meshPhongMaterial visible={false} />
+          </mesh>
+          <mesh position={[4.25, 0, 0]}>
+            <boxGeometry args={[3.3, 1, 3.3]} />
+            <meshPhongMaterial visible={false} />
+          </mesh>
+
+          {/* bounding box 3rd row bldg */}
+          <mesh position={[0.1, 0, -4.2]}>
+            <boxGeometry args={[3.3, 1, 3.3]} />
+            <meshPhongMaterial visible={false} />
+          </mesh>
+
+          {/* <Sky /> */}
           <City />
           <Character />
+          <Roads />
         </Physics>
       </Canvas>
 
