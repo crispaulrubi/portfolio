@@ -4,7 +4,15 @@ import { OAuth2Client } from "google-auth-library";
 
 export async function GET(request: NextRequest) {
     const auth = new google.auth.GoogleAuth({
-        keyFile: "credentials.json",
+        credentials: {
+            type: process.env.TYPE,
+            project_id: process.env.GOOGLE_AUTH_PROJECT_ID,
+            private_key_id: process.env.GOOGLE_AUTH_PRIVATE_KEY_ID,
+            private_key: process.env.GOOGLE_AUTH_PRIVATE_KEY?.replaceAll(/\\n/g, '\n'),
+            client_email: process.env.GOOGLE_AUTH_CLIENT_EMAIL,
+            client_id: process.env.GOOGLE_AUTH_CLIENT_ID,
+            universe_domain: process.env.GOOGLE_AUTH_UNIVERSE_DOMAIN,
+        },
         scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     });
 
