@@ -7,3 +7,11 @@ export interface PersonalInfo {
   gender: string;
   occupation: string;
 };
+
+export interface WorkExperience {
+  companyName: string;
+  timeFrame: string;
+  role: string;
+  techStack: string;
+  achievements: string[];
+}

@@ -1,6 +1,6 @@
 import { PersonalInfo } from "@/common/interface";
 
-export function mapUserInfoToPersonalInfo(data: string[][]): PersonalInfo {
+export function mapSheetDataToPersonalInfo(data: string[][]): PersonalInfo {
     const infoList = [
         "firstName",
         "lastName",
