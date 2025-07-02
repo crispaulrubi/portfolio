@@ -13,8 +13,8 @@ export const PersonalInfoProvider: React.FC<{ children: React.ReactNode }> = ({ 
       try {
         const response = await fetch('/api/google-sheet');
         if (response.ok) {
-          const result = await response.json();
-          setPersonalInfo(mapUserInfoToPersonalInfo(result.data.values));
+          const result: string[][] = await response.json();
+          setPersonalInfo(mapUserInfoToPersonalInfo(result));
         } else {
           console.error('Failed to fetch personal info', response.status);
         }

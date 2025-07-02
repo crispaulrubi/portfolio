@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
             range,
         });
 
-        return NextResponse.json(response, { status: 200 });
+        return NextResponse.json(response?.data?.values, { status: 200 });
     } catch (error) {
         console.error("Error fetching data from Google Sheets:", error);
         return new Response("Error fetching data", { status: 500 });
