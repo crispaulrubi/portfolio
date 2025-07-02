@@ -13,14 +13,16 @@ import {
   Text,
   Schema
 } from "@once-ui-system/core";
-import { baseURL, about, person, social } from "@/resources";
+import { baseURL, about, person, social, work } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 import { usePersonalInfo } from "@/components/PersonalInfoContext";
 
 export default function AboutClient() {
-  const personalInfo = usePersonalInfo();
+  const userData = usePersonalInfo();
+  const personalInfo = userData?.personalInfo;
+  const workExperiences = userData?.workExperiences ?? [];
 
   const structure = [
     {
@@ -31,7 +33,7 @@ export default function AboutClient() {
     {
       title: about.work.title,
       display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
+      items: workExperiences.map((experience) => experience.companyName),
     },
     {
       title: about.studies.title,
@@ -185,31 +187,34 @@ export default function AboutClient() {
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
+                {workExperiences.map((experience, index) => (
+                  <Column key={`${experience.companyName}-${experience.role}-${index}`} fillWidth>
                     <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
+                      <Text id={experience.companyName} variant="heading-strong-l">
+                        {experience.companyName}
                       </Text>
                       <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {experience.timeframe}
+                        {experience.timeFrame}
                       </Text>
                     </Flex>
                     <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
                       {experience.role}
                     </Text>
+                    <Text variant="body-default-xs" onBackground="brand-weak" marginBottom="m">
+                      Technologies: {experience.techStack}
+                    </Text>
                     <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement: JSX.Element, index: number) => (
+                      {experience.achievements.map((achievement: string, index: number) => (
                         <Text
                           as="li"
                           variant="body-default-m"
-                          key={`${experience.company}-${index}`}
+                          key={`${experience.companyName}-${index}`}
                         >
                           {achievement}
                         </Text>
                       ))}
                     </Column>
-                    {experience.images.length > 0 && (
+                    {/* {experience.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
                           <Flex
@@ -234,7 +239,7 @@ export default function AboutClient() {
                           </Flex>
                         ))}
                       </Flex>
-                    )}
+                    )} */}
                   </Column>
                 ))}
               </Column>

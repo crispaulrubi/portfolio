@@ -21,14 +21,13 @@ export async function GET(request: NextRequest) {
         const sheets = google.sheets({ version: 'v4', auth: authClient });
 
         const spreadsheetId = process.env.GOOGLE_SHEET_ID;
-        const range = 'Sheet1!A1:D10';
 
-        const response = await sheets.spreadsheets.values.get({
+        const response = await sheets.spreadsheets.values.batchGet({
             spreadsheetId,
-            range,
+            ranges: ['basic-info!A1:B7', 'work-experience!A2:E30'],
         });
 
-        return NextResponse.json(response?.data?.values, { status: 200 });
+        return NextResponse.json(response?.data?.valueRanges ?? [], { status: 200 });
     } catch (error) {
         console.error("Error fetching data from Google Sheets:", error);
         return new Response("Error fetching data", { status: 500 });

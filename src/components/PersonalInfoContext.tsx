@@ -1,20 +1,28 @@
 "use client";
-import { PersonalInfo } from '@/common/interface';
-import { mapUserInfoToPersonalInfo } from '@/utils/userInfoMapper';
+import { PersonalInfo, WorkExperience } from '@/common/interface';
+import { mapSheetDataToPersonalInfo } from '@/utils/userInfoMapper';
+import { mapSheetDataToWorkExp } from '@/utils/workExpMapper';
 import React, { useEffect, useContext, useState } from 'react';
 
-const PersonalInfoContext = React.createContext<PersonalInfo | undefined>(undefined);
+type PersonalInfoContextType = {
+  personalInfo: PersonalInfo;
+  workExperiences: WorkExperience[];
+}
+
+const PersonalInfoContext = React.createContext<PersonalInfoContextType | undefined>(undefined);
 
 export const PersonalInfoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [personalInfo, setPersonalInfo] = useState<PersonalInfo | undefined>(undefined);
+  const [personalInfo, setPersonalInfo] = useState<PersonalInfo>({} as PersonalInfo);
+  const [workExperiences, setWorkExperiences] = useState<WorkExperience[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('/api/google-sheet');
         if (response.ok) {
-          const result: string[][] = await response.json();
-          setPersonalInfo(mapUserInfoToPersonalInfo(result));
+          const result = await response.json();
+          setPersonalInfo(mapSheetDataToPersonalInfo(result?.[0]?.values || []));
+          setWorkExperiences(mapSheetDataToWorkExp(result?.[1]?.values || []));
         } else {
           console.error('Failed to fetch personal info', response.status);
         }
@@ -26,7 +34,7 @@ export const PersonalInfoProvider: React.FC<{ children: React.ReactNode }> = ({ 
   }, []);
 
   return (
-    <PersonalInfoContext.Provider value={personalInfo}>
+    <PersonalInfoContext.Provider value={{ personalInfo, workExperiences }}>
       {children}
     </PersonalInfoContext.Provider>
   );
