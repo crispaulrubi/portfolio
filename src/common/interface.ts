@@ -15,3 +15,10 @@ export interface WorkExperience {
   techStack: string;
   achievements: string[];
 }
+
+export interface Studies {
+  institutionName: string;
+  timeFrame: string;
+  degree: string;
+  achievement?: string;
+}

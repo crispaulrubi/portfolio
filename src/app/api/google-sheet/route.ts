@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
 
         const response = await sheets.spreadsheets.values.batchGet({
             spreadsheetId,
-            ranges: ['basic-info!A1:B7', 'work-experience!A2:E30'],
+            ranges: ['basic-info!A1:B7', 'work-experience!A2:E', 'studies!A2:D6'],
         });
 
         return NextResponse.json(response?.data?.valueRanges ?? [], { status: 200 });

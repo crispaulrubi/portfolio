@@ -23,6 +23,7 @@ export default function AboutClient() {
   const userData = usePersonalInfo();
   const personalInfo = userData?.personalInfo;
   const workExperiences = userData?.workExperiences ?? [];
+  const studies = userData?.studies ?? [];
 
   const structure = [
     {
@@ -214,6 +215,7 @@ export default function AboutClient() {
                         </Text>
                       ))}
                     </Column>
+                    {/* Image Code below */}
                     {/* {experience.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
@@ -252,13 +254,21 @@ export default function AboutClient() {
                 {about.studies.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
+                {studies.map((studyData, index) => (
+                  <Column key={`${studyData.institutionName}-${index}`} fillWidth gap="4">
+                    <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
+                      <Text id={studyData.institutionName} variant="heading-strong-l">
+                        {studyData.institutionName}
+                      </Text>
+                      <Text variant="heading-default-xs" onBackground="neutral-weak">
+                        {studyData.timeFrame}
+                      </Text>
+                    </Flex>
+                    <Text variant="body-default-s" onBackground="brand-weak">
+                      {studyData.achievement}
                     </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {institution.description}
+                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                      {studyData.degree}
                     </Text>
                   </Column>
                 ))}
