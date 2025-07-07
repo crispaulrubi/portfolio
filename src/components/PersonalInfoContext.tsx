@@ -1,12 +1,16 @@
 "use client";
-import { PersonalInfo, WorkExperience } from '@/common/interface';
+import { PersonalInfo, WorkExperience, Studies, Certifications } from '@/common/interface';
 import { mapSheetDataToPersonalInfo } from '@/utils/userInfoMapper';
 import { mapSheetDataToWorkExp } from '@/utils/workExpMapper';
+import { mapSheetDataToStudies } from '@/utils/studiesMapper';
+import { mapSheetDataToCertifications } from '@/utils/certificationsMapper';
 import React, { useEffect, useContext, useState } from 'react';
 
 type PersonalInfoContextType = {
   personalInfo: PersonalInfo;
   workExperiences: WorkExperience[];
+  studies: Studies[];
+  certifications: Certifications[];
 }
 
 const PersonalInfoContext = React.createContext<PersonalInfoContextType | undefined>(undefined);
@@ -14,6 +18,8 @@ const PersonalInfoContext = React.createContext<PersonalInfoContextType | undefi
 export const PersonalInfoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [personalInfo, setPersonalInfo] = useState<PersonalInfo>({} as PersonalInfo);
   const [workExperiences, setWorkExperiences] = useState<WorkExperience[]>([]);
+  const [studies, setStudies] = useState<Studies[]>([]);
+  const [certifications, setCertifications] = useState<Certifications[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +29,8 @@ export const PersonalInfoProvider: React.FC<{ children: React.ReactNode }> = ({ 
           const result = await response.json();
           setPersonalInfo(mapSheetDataToPersonalInfo(result?.[0]?.values || []));
           setWorkExperiences(mapSheetDataToWorkExp(result?.[1]?.values || []));
+          setStudies(mapSheetDataToStudies(result?.[2]?.values || []));
+          setCertifications(mapSheetDataToCertifications(result?.[3]?.values || []));
         } else {
           console.error('Failed to fetch personal info', response.status);
         }
@@ -34,7 +42,7 @@ export const PersonalInfoProvider: React.FC<{ children: React.ReactNode }> = ({ 
   }, []);
 
   return (
-    <PersonalInfoContext.Provider value={{ personalInfo, workExperiences }}>
+    <PersonalInfoContext.Provider value={{ personalInfo, workExperiences, studies, certifications }}>
       {children}
     </PersonalInfoContext.Provider>
   );

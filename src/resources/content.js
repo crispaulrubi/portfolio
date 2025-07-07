@@ -97,21 +97,12 @@ const about = {
   studies: {
     display: true, // set to false to hide this section
     title: "Studies",
-    institutions: [
-      {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
-      },
-    ],
+    institutions: []
   },
-  technical: {
+  certifications: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
-    skills: [
+    title: "Certifications",
+    certs: [
       {
         title: "Figma",
         description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
