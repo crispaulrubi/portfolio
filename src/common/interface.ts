@@ -22,3 +22,11 @@ export interface Studies {
   degree: string;
   achievement?: string;
 }
+
+export interface Certifications {
+  name: string;
+  timeFrame: string;
+  issuingOrganization: string;
+  credentialUrl?: string;
+  imageLocation?: string;
+}

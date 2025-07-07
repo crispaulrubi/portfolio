@@ -24,6 +24,7 @@ export default function AboutClient() {
   const personalInfo = userData?.personalInfo;
   const workExperiences = userData?.workExperiences ?? [];
   const studies = userData?.studies ?? [];
+  const certifications = userData?.certifications ?? [];
 
   const structure = [
     {
@@ -39,12 +40,12 @@ export default function AboutClient() {
     {
       title: about.studies.title,
       display: about.studies.display,
-      items: about.studies.institutions.map((institution) => institution.name),
+      items: studies.map((study) => study.institutionName),
     },
     {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
+      title: about.certifications.title,
+      display: about.certifications.display,
+      items: certifications.map((cert) => cert.name),
     },
   ];
   return (
@@ -276,47 +277,45 @@ export default function AboutClient() {
             </>
           )}
 
-          {about.technical.display && (
+          {about.certifications.display && (
             <>
               <Heading
                 as="h2"
-                id={about.technical.title}
+                id={about.certifications.title}
                 variant="display-strong-s"
                 marginBottom="40"
               >
-                {about.technical.title}
+                {about.certifications.title}
               </Heading>
               <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text id={skill.title} variant="heading-strong-l">{skill.title}</Text>
+                {certifications.map((cert, index) => (
+                  <Column key={`${cert}-${index}`} fillWidth gap="4">
+                    <Text id={cert.name} variant="heading-strong-l">{cert.name}</Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
+                      Issuing Organization: {cert.issuingOrganization}
                     </Text>
-                    {skill.images && skill.images.length > 0 && (
+                    {cert.imageLocation && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
+                        <Flex
+                          key={index}
+                          border="neutral-medium"
+                          radius="m"
+                          //@ts-ignore
+                          minWidth={16}
+                          //@ts-ignore
+                          height={9}
+                        >
+                          <Media
+                            enlarge
                             radius="m"
                             //@ts-ignore
-                            minWidth={image.width}
+                            sizes="16"
                             //@ts-ignore
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
+                            alt="Project Image"
+                            //@ts-ignore
+                            src={cert.imageLocation}
+                          />
+                        </Flex>
                       </Flex>
                     )}
                   </Column>
