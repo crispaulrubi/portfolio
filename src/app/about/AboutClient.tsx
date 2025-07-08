@@ -13,7 +13,7 @@ import {
   Text,
   Schema
 } from "@once-ui-system/core";
-import { baseURL, about, person, social, work } from "@/resources";
+import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
