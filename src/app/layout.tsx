@@ -98,7 +98,8 @@ export default async function RootLayout({
       </head>
       <Providers>
         <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
-          <Background
+          <ThreeScene />
+          {/* <Background
             position="fixed"
             mask={{
               x: effects.mask.x,
@@ -141,7 +142,6 @@ export default async function RootLayout({
           />
           <Flex fillWidth minHeight="16" hide="s"/>
           <Header />
-          <ThreeScene />
           <Flex
             zIndex={0}
             fillWidth
@@ -155,7 +155,7 @@ export default async function RootLayout({
               </RouteGuard>
             </Flex>
           </Flex>
-          <Footer/>
+          <Footer/> */}
         </Column>
       </Providers>
     </Flex>
