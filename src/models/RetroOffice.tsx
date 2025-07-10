@@ -9,15 +9,19 @@ interface RetroOfficeGLTF extends GLTF {
   materials: { [key: string]: THREE.Material };
 }
 
-export function RetroOfficeModel(props: ThreeElements["group"]) {
+interface ModelProps {
+    onModelClick?: (mesh: THREE.Object3D) => void;
+}
+
+export function RetroOfficeModel({ onModelClick }: ModelProps) {
   const { nodes, materials } = useGLTF(
     "/models/retro-office/scene.gltf"
   ) as RetroOfficeGLTF;
   return (
-    <group {...props} dispose={null}>
+    <group dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         {/* Task Board */}
-        <group position={[-2.354, -0.123, 1.865]} scale={0.376}>
+        <group onClick={onModelClick} position={[-2.354, -0.123, 1.865]} scale={0.376}>
           <mesh
             castShadow
             receiveShadow
