@@ -21,7 +21,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
     <group dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         {/* Task Board */}
-        <group onClick={onModelClick} position={[-2.354, -0.123, 1.865]} scale={0.376}>
+        <group onClick={onModelClick} position={[-0.154, -0.923, 1.365]} rotation={[0, 0, -Math.PI/9]} scale={0.576}>
           <mesh
             castShadow
             receiveShadow
@@ -49,7 +49,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
         </group>
 
         {/* Coffee Mug */}
-        <group
+        {/* <group
           position={[1.325, -4.639, 0.135]}
           rotation={[-0.033, 0.043, -1.938]}
           scale={0.08}
@@ -66,10 +66,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cylinder006_1.geometry}
             material={materials["Material.026"]}
           />
-        </group>
+        </group> */}
 
         {/* Yellow cabinet */}
-        <>
+        {/* <>
           <group
             position={[0.039, -0.837, 0.524]}
             rotation={[0, 0, -Math.PI]}
@@ -190,11 +190,11 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
               material={materials["Material.009"]}
             />
           </group>
-        </>
+        </> */}
 
         {/* Plant */}
         <group
-          position={[3.142, -0.668, 0.231]}
+          position={[-1.842, -0.4, -0.531]}
           rotation={[0, 0, -0.637]}
           scale={0.225}
         >
@@ -219,7 +219,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
         </group>
 
         {/* Stamp */}
-        <group
+        {/* <group
           position={[2.042, -4.645, 0.075]}
           rotation={[0, 0, -Math.PI / 2]}
           scale={0.079}
@@ -242,10 +242,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube025_2.geometry}
             material={materials["Material.032"]}
           />
-        </group>
+        </group> */}
 
         {/* Water Dispenser */}
-        <group position={[-1.132, -0.675, 0.258]} scale={0.232}>
+        {/* <group position={[-1.132, -0.675, 0.258]} scale={0.232}>
           <mesh
             castShadow
             receiveShadow
@@ -294,12 +294,12 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube023_7.geometry}
             material={materials["Material.006"]}
           />
-        </group>
+        </group> */}
 
         {/* Larger Chair */}
         <group
-          position={[-1.943, -2.64, 0.248]}
-          rotation={[0, 0, 2.087]}
+          position={[-0.943, -2.64, -0.6]}
+          rotation={[0, 0, 0.587]}
           scale={0.381}
         >
           <mesh
@@ -341,7 +341,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
         </group>
 
         {/* Table */}
-        <group position={[1.025, -2.861, 0.854]} scale={0.422}>
+        <group position={[0.025, -1.281, 0.154]} rotation={[0, 0, -Math.PI/8]} scale={0.422}>
           <mesh
             castShadow
             receiveShadow
@@ -357,7 +357,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
         </group>
 
         {/* Shit that looks like toilet paper */}
-        <group
+        {/* <group
           position={[0.445, -4.608, 0.111]}
           rotation={[0, 0, 0.977]}
           scale={0.104}
@@ -386,10 +386,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube019_3.geometry}
             material={materials["Material.030"]}
           />
-        </group>
+        </group> */}
 
         {/* Table with drawer */}
-        <group position={[-3.151, -0.731, 0.876]} scale={0.422}>
+        <group position={[-2.151, -2.331, 0.106]} rotation={[0, 0, Math.PI/2.5]} scale={0.422}>
           <mesh
             castShadow
             receiveShadow
@@ -417,7 +417,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
         </group>
 
         {/* Coffee maker */}
-        <group
+        {/* <group
           position={[-3.243, -4.688, 0.076]}
           rotation={[0, 0, Math.PI / 4]}
           scale={0.909}
@@ -452,10 +452,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube015_4.geometry}
             material={materials["Material.022"]}
           />
-        </group>
+        </group> */}
 
         {/* Blue cabinet */}
-        <>
+        {/* <>
           <group
             position={[1.258, -0.837, 0.524]}
             rotation={[0, 0, -Math.PI]}
@@ -576,10 +576,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
               material={materials.Material}
             />
           </group>
-        </>
+        </> */}
 
         {/* Clock */}
-        <group
+        {/* <group
           position={[2.308, -0.054, 2.389]}
           rotation={[Math.PI / 2, 0, 0]}
           scale={0.66}
@@ -602,10 +602,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cylinder_2.geometry}
             material={materials["Material.037"]}
           />
-        </group>
+        </group> */}
         
         {/* Typewriter */}
-        <group
+        {/* <group
           position={[-2.525, -4.536, 0.12]}
           rotation={[0, 0, Math.PI / 4]}
           scale={0.398}
@@ -646,10 +646,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube_5.geometry}
             material={materials["Material.005"]}
           />
-        </group>
+        </group> */}
         
         {/* Folder */}
-        <group
+        {/* <group
           position={[-1.657, -4.709, 0.259]}
           rotation={[0, 0, -1.865]}
           scale={0.055}
@@ -678,10 +678,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube001_3.geometry}
             material={materials["Material.018"]}
           />
-        </group>
+        </group> */}
         
         {/* Standalone Drawer */}
-        <group position={[2.198, -0.472, 0.34]} scale={0.342}>
+        {/* <group position={[2.198, -0.472, 0.34]} scale={0.342}>
           <mesh
             castShadow
             receiveShadow
@@ -700,10 +700,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube003_2.geometry}
             material={materials["Material.039"]}
           />
-        </group>
+        </group> */}
 
         {/* Smaller Chair */}
-        <group
+        {/* <group
           position={[-3.462, -2.696, 0.248]}
           rotation={[0, 0, 1.027]}
           scale={0.381}
@@ -750,10 +750,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube004_6.geometry}
             material={materials["Material.003"]}
           />
-        </group>
+        </group> */}
 
         {/* Exit sign */}
-        <group position={[3.075, -0.098, 2.368]} scale={0.805}>
+        {/* <group position={[3.075, -0.098, 2.368]} scale={0.805}>
           <mesh
             castShadow
             receiveShadow
@@ -778,10 +778,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube006_3.geometry}
             material={materials["Material.002"]}
           />
-        </group>
+        </group> */}
         
         {/* Paper bundle */}
-        <mesh
+        {/* <mesh
           castShadow
           receiveShadow
           geometry={nodes.Cube024_0.geometry}
@@ -789,10 +789,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
           position={[-1.172, -4.638, 0.213]}
           rotation={[0, 0, -2.553]}
           scale={[0.131, 0.183, 0.067]}
-        />
+        /> */}
 
         {/* Single paper */}
-        <mesh
+        {/* <mesh
           castShadow
           receiveShadow
           geometry={nodes.Cube018_0.geometry}
@@ -800,10 +800,10 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
           position={[-0.321, -4.879, 0.012]}
           rotation={[0, 0, 2.537]}
           scale={[0.131, 0.183, 0.067]}
-        />
+        /> */}
         
         {/* Black paper holder */}
-        <>
+        {/* <>
             <mesh
             castShadow
             receiveShadow
@@ -822,7 +822,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             rotation={[0, 0, 0.505]}
             scale={0.163}
             />
-        </>
+        </> */}
       </group>
     </group>
   );

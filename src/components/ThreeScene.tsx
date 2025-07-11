@@ -76,7 +76,7 @@ const ThreeScene: React.FC = () => {
         left: 0,
         width: "100vw",
         height: "100vh",
-        zIndex: 100,
+        zIndex: 0,
         pointerEvents: "auto",
       }}
     >

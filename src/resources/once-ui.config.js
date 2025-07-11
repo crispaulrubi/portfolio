@@ -105,7 +105,7 @@ const effects = {
     colorEnd: "page-background",
   },
   dots: {
-    display: false,
+    display: true,
     opacity: 40,
     size: "2",
     color: "brand-background-strong",
