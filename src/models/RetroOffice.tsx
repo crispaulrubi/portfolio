@@ -21,7 +21,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
     <group dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         {/* Task Board */}
-        <group onClick={onModelClick} position={[-0.154, -0.923, 1.365]} rotation={[0, 0, -Math.PI/9]} scale={0.576}>
+        <group onClick={onModelClick} position={[-0.154, -0.923, 1.365]} rotation={[0, 0, -Math.PI/8]} scale={0.576}>
           <mesh
             castShadow
             receiveShadow
@@ -49,8 +49,8 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
         </group>
 
         {/* Coffee Mug */}
-        {/* <group
-          position={[1.325, -4.639, 0.135]}
+        <group
+          position={[-2.325, -1.639, 0.435]}
           rotation={[-0.033, 0.043, -1.938]}
           scale={0.08}
         >
@@ -66,7 +66,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cylinder006_1.geometry}
             material={materials["Material.026"]}
           />
-        </group> */}
+        </group>
 
         {/* Yellow cabinet */}
         {/* <>
@@ -681,7 +681,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
         </group> */}
         
         {/* Standalone Drawer */}
-        {/* <group position={[2.198, -0.472, 0.34]} scale={0.342}>
+        <group position={[1.598, -1.972, -0.44]} rotation={[0, 0, -Math.PI/8]} scale={0.342}>
           <mesh
             castShadow
             receiveShadow
@@ -700,7 +700,7 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
             geometry={nodes.Cube003_2.geometry}
             material={materials["Material.039"]}
           />
-        </group> */}
+        </group>
 
         {/* Smaller Chair */}
         {/* <group
@@ -781,26 +781,27 @@ export function RetroOfficeModel({ onModelClick }: ModelProps) {
         </group> */}
         
         {/* Paper bundle */}
-        {/* <mesh
+        <mesh
+          onClick={onModelClick}
           castShadow
           receiveShadow
           geometry={nodes.Cube024_0.geometry}
           material={materials["Material.035"]}
-          position={[-1.172, -4.638, 0.213]}
-          rotation={[0, 0, -2.553]}
+          position={[-0.172, -1.338, 0.38]}
+          rotation={[0, 0, -Math.PI/8]}
           scale={[0.131, 0.183, 0.067]}
-        /> */}
+        />
 
         {/* Single paper */}
-        {/* <mesh
+        <mesh
           castShadow
           receiveShadow
           geometry={nodes.Cube018_0.geometry}
           material={materials["Material.035"]}
-          position={[-0.321, -4.879, 0.012]}
-          rotation={[0, 0, 2.537]}
+          position={[0.072, -1.438, 0.31]}
+          rotation={[0, 0, -Math.PI/4]}
           scale={[0.131, 0.183, 0.067]}
-        /> */}
+        />
         
         {/* Black paper holder */}
         {/* <>

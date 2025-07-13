@@ -140,7 +140,7 @@ export default async function RootLayout({
             }}
           />
           <ThreeScene />
-          <Flex fillWidth minHeight="16" hide="s"/>
+          {/* <Flex fillWidth minHeight="16" hide="s"/>
           <Header />
           <Flex
             zIndex={0}
@@ -154,7 +154,7 @@ export default async function RootLayout({
                 {children}
               </RouteGuard>
             </Flex>
-          </Flex>
+          </Flex> */}
           <Footer/>
         </Column>
       </Providers>
